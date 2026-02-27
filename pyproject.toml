@@ -44,9 +44,6 @@ dev = [
     "mypy>=1.7.1",
 ]
 
-[project.scripts]
-learning-path = "backend.interfaces.cli.commands:main"
-
 [tool.black]
 line-length = 88
 target-version = ['py39']
@@ -69,7 +66,7 @@ extend-exclude = '''
 profile = "black"
 multi_line_output = 3
 line_length = 88
-known_first_party = ["backend"]
+known_first_party = ["domain", "application", "infrastructure", "api"]
 
 [tool.mypy]
 python_version = "3.9"
@@ -87,9 +84,9 @@ warn_unreachable = true
 strict_equality = true
 
 [tool.pytest.ini_options]
-testpaths = ["backend/tests"]
+testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
-addopts = "-v --cov=backend --cov-report=html --cov-report=term-missing"
+addopts = "-v --cov=domain --cov=application --cov=infrastructure --cov=api --cov-report=html --cov-report=term-missing"
 asyncio_mode = "auto"
