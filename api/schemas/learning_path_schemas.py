@@ -3,7 +3,7 @@ Learning Path Schemas - API Layer
 Pydantic models for learning path endpoints
 """
 from pydantic import BaseModel, Field, validator
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Any
 from datetime import datetime
 from enum import Enum
 
@@ -83,7 +83,7 @@ class LearningPathResponse(BaseModel):
 class GenerateLearningPathResponse(SuccessResponse):
     """Response model for learning path generation"""
     learning_path: LearningPathResponse = Field(..., description="Generated learning path")
-    generation_stats: Dict[str, any] = Field(..., description="Generation statistics")
+    generation_stats: Dict[str, Any] = Field(..., description="Generation statistics")
     warnings: List[str] = Field(default=[], description="Generation warnings")
 
 

@@ -3,7 +3,7 @@ Repository Schemas - API Layer
 Pydantic models for repository-related endpoints
 """
 from pydantic import BaseModel, Field, validator
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Any
 from datetime import datetime
 from enum import Enum
 
@@ -89,7 +89,7 @@ class RepositoryListRequest(BaseModel):
 class RepositoryListResponse(PaginatedResponse):
     """Response model for repository listing"""
     repositories: List[RepositoryResponse] = Field(..., description="List of repositories")
-    filters_applied: Dict[str, any] = Field(..., description="Applied filters")
+    filters_applied: Dict[str, Any] = Field(..., description="Applied filters")
 
 
 class RepositoryDetailResponse(RepositoryResponse):
